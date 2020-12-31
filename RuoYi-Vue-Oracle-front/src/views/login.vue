@@ -57,7 +57,7 @@
 import { getCodeImg } from "@/api/login";
 import Cookies from "js-cookie";
 import { encrypt, decrypt } from '@/utils/jsencrypt'
-
+//导出，一个js文件是可以有多个 export，但是一个js文件中只能有一个export default
 export default {
   name: "Login",
   data() {
@@ -68,7 +68,7 @@ export default {
         username: "admin",
         password: "admin123",
         rememberMe: false,
-        code: "",
+        code: "1234",
         uuid: ""
       },
       loginRules: {
@@ -78,12 +78,13 @@ export default {
         password: [
           { required: true, trigger: "blur", message: "密码不能为空" }
         ],
-        code: [{ required: true, trigger: "change", message: "验证码不能为空" }]
+        code: [{ required: false, trigger: "change", message: "验证码不能为空" }]
       },
       loading: false,
       redirect: undefined
     };
   },
+  //watch 它可以用来监测Vue实例上的数据变动
   watch: {
     $route: {
       handler: function(route) {
@@ -114,6 +115,7 @@ export default {
       };
     },
     handleLogin() {
+      debugger;
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
@@ -126,7 +128,8 @@ export default {
             Cookies.remove("password");
             Cookies.remove('rememberMe');
           }
-          this.$store.dispatch("Login", this.loginForm).then(() => {
+          //分发action https://vuex.vuejs.org/zh/guide/actions.html
+          this.$store.dispatch("loginPwd", this.loginForm).then(() => {
             this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
           }).catch(() => {
             this.loading = false;

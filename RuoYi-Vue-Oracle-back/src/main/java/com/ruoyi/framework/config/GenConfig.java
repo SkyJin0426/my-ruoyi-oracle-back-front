@@ -1,6 +1,7 @@
 package com.ruoyi.framework.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,6 +24,18 @@ public class GenConfig
 
     /** 表前缀(类名不会包含表前缀) */
     public static String tablePrefix;
+
+    /** 上级菜单 */
+    public static String parentMenu;
+
+    /** 生成代码文件前缀 */
+    public static String pathInfo;
+
+    public static String getParentMenu() { return parentMenu;    }
+    public  void setParentMenu(String parentMenu) { GenConfig.parentMenu = parentMenu;   }
+
+    public static String getPathInfo() { return pathInfo; }
+    public  void setPathInfo(String pathInfo) {GenConfig.pathInfo = pathInfo;}
 
     public static String getAuthor()
     {
@@ -63,4 +76,7 @@ public class GenConfig
     {
         GenConfig.tablePrefix = tablePrefix;
     }
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.ruoyi.project.tool.gen.util;
 
+import java.io.File;
 import java.util.Arrays;
 import org.apache.commons.lang3.RegExUtils;
 import com.ruoyi.common.constant.GenConstants;
@@ -27,6 +28,13 @@ public class GenUtils
         genTable.setFunctionName(replaceText(genTable.getTableComment()));
         genTable.setFunctionAuthor(GenConfig.getAuthor());
         genTable.setCreateBy(operName);
+
+        //TODO  设置路径
+        genTable.setOptions(String.format("{\"parentMenuId\":%s}",GenConfig.getParentMenu())  );
+        //{"parentMenuId":3}
+        genTable.setGenPath(GenConfig.getPathInfo()+ File.separator+genTable.getTableName());
+        //（0zip压缩包 1自定义路径）
+        genTable.setGenType("1");
     }
 
     /**
@@ -110,6 +118,7 @@ public class GenUtils
         else if (StringUtils.endsWithIgnoreCase(columnName, "type")
                 || StringUtils.endsWithIgnoreCase(columnName, "sex"))
         {
+            //TODO 给下拉框赋值
             column.setHtmlType(GenConstants.HTML_SELECT);
         }
         // 文件字段设置上传控件

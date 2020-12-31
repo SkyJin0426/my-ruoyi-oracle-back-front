@@ -14,7 +14,7 @@
       <el-col :span="12">
         <el-form-item prop="packageName">
           <span slot="label">
-            生成包路径
+            生成包根目录
             <el-tooltip content="生成在哪个java包下，例如 com.ruoyi.system" placement="top">
               <i class="el-icon-question"></i>
             </el-tooltip>

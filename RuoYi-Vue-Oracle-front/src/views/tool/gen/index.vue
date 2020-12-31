@@ -305,9 +305,9 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const tableIds = row.tableId || this.ids;
-      this.$confirm('是否确认删除表编号为"' + tableIds + '"的数据项?', "警告", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
+      this.$confirm('是否确认删除表编号为22"' + tableIds + '"的数据项?', "警告", {
+        cancelButtonText: "取消1",
+        confirmButtonText: "确定2",
         type: "warning"
       }).then(function() {
           return delTable(tableIds);

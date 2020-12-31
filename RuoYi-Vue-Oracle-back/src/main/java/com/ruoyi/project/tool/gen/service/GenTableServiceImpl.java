@@ -231,6 +231,8 @@ public class GenTableServiceImpl implements IGenTableService
     {
         // 查询表信息
         GenTable table = genTableMapper.selectGenTableByName(tableName);
+        //TODO 判断 SQL 的id不重复
+
         // 获取菜单id序列，用于生成菜单sql语句
         long menuId = genTableMapper.selectMenuId();
         table.setMenuId(menuId);
@@ -246,7 +248,8 @@ public class GenTableServiceImpl implements IGenTableService
         List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory());
         for (String template : templates)
         {
-            if (!StringUtils.containsAny(template, "sql.vm", "api.js.vm", "index.vue.vm", "index-tree.vue.vm"))
+            if (true)
+            //!StringUtils.containsAny(template, "sql.vm", "api.js.vm", "index.vue.vm", "index-tree.vue.vm")
             {
                 // 渲染模板
                 StringWriter sw = new StringWriter();

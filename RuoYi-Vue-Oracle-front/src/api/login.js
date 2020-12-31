@@ -14,6 +14,18 @@ export function login(username, password, code, uuid) {
     data: data
   })
 }
+export function loginPwd(username, password) {
+  debugger;
+  const data = {
+    username,
+    password
+  }
+  return request({
+    url: '/login/pwd',
+    method: 'post',
+    data: data
+  })
+}
 
 // 获取用户详细信息
 export function getInfo() {

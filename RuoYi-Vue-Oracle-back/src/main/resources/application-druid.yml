@@ -6,6 +6,9 @@ spring:
         druid:
             # 主库数据源
             master:
+                url: jdbc:oracle:thin:@192.168.1.213:1521/csorautf8
+                username: wuhan_college_training
+                password: snDjhIwn258
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭

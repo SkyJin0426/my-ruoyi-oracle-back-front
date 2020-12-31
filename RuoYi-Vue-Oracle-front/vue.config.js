@@ -30,11 +30,13 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     port: port,
-    open: true,
+    open: false,
+    hot: true,
     proxy: {
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:9898`,
+        // http://192.168.6.139:9898/swagger-ui.html
+        target: `http://192.168.6.139:9898`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
